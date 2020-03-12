@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="VK" />
+  <title>Sorular</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Sorular</h1>
+<p class="author">VK</p>
+</header>
+
+<p>Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github’ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).</p>
+<h1 id="soru-20200312">Soru: 2020/03/12</h1>
+<p>Soru: <span class="math inline">\(\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}\)</span> ise n’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}dt\)</span> nedir?<br />
+<br />
+<strong>Cevap:</strong><br />
+<span class="math inline">\(n\)</span> tek ise <span class="math inline">\(n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}\)</span> yazılabilir. Öyleyse integral:</p>
+<p><span class="math display">\[\int_0^\infty t^{2m+1}e^{-kt^2}dt = \int_0^\infty t^{2m}te^{-kt^2}dt\]</span></p>
+<p>Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. <span class="math inline">\(z = t^2\)</span> için <span class="math inline">\(dz = 2tdt\)</span> olur. <span class="math display">\[\begin{aligned}
+    z &amp;= t^2 \\
+    dz&amp;= 2tdt \\
+    t^{2m} &amp;= (t^2)^m = z^m \\
+    t &amp;\rightarrow 0, \quad z \rightarrow 0 \\
+    t &amp;\rightarrow \infty, \quad  z \rightarrow \infty\end{aligned}\]</span></p>
+<p>Öyleyse:</p>
+<p><span class="math display">\[\underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}dz}_{I(m)}\]</span></p>
+<p>Bundan sonra <span class="math inline">\(I(m)\)</span>’i çözmek integral reduction ile çok kolay! Tabi yardımımıza kısmi integrasyon yetişsin. <span class="math inline">\(\int vdu = uv - \int udv\)</span> <span class="math display">\[\begin{aligned}
+    v &amp;= z^m \\
+    dv&amp;= mz^{m-1} \\
+    du&amp;= e^{-kz}dz \\
+    u &amp;= -e^{-kz}/k \\\end{aligned}\]</span></p>
+<p>Yerlerine yazarsak:</p>
+<p><span class="math display">\[\begin{aligned}
+    \label{eq:Im}
+    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}dz}_{I(m-1)} \end{aligned}\]</span></p>
+<p>Burada <span class="math inline">\(f(z)\)</span> hesaplanırsa <span class="math display">\[\begin{aligned}
+\lim_{z \to \infty} f(z) &amp;= \lim_{z \to \infty} \left(-\frac{z^m}{e^{kz}}\right) = 0 \\
+f(0) &amp;= 0 \end{aligned}\]</span></p>
+<p>Böylelikle Denklem <a href="#eq:Im" data-reference-type="eqref" data-reference="eq:Im">[eq:Im]</a>: <span class="math display">\[\begin{aligned}
+    I(m) = \frac{m}{k} I(m-1) \end{aligned}\]</span></p>
+<p><span class="math inline">\(m=1\)</span> için soruda verildiği üzere <span class="math inline">\(I(0) = 1/(2k)\)</span> olduğundan:</p>
+<p><span class="math display">\[\begin{aligned}
+    I(1) &amp;= \frac{1}{k} \cdot \frac{1}{2k} = \frac{1}{2k^2} \\
+    I(2) &amp;= \frac{2}{k} \cdot \frac{1}{2k^2} = \frac{1}{k^3} \\
+    I(3) &amp;= \frac{3}{k} \cdot \frac{1}{k^3} = \frac{3}{k^4} \\
+      &amp; \;\;\vdots \\
+    I(m) &amp;= \frac{m!}{2k^{m+1}} \end{aligned}\]</span></p>
+<p>Burada tabi soruda <span class="math inline">\(n\)</span> verildigi icin <span class="math inline">\(m\)</span> cinsinden birakmak yakışık almaz. Onu da çevirmek lazım (çevirmedi)</p>
+</body>
+</html>
