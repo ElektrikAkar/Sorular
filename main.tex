@@ -1,0 +1,80 @@
+    \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Sorular}
+\author{VK}
+
+\begin{document}
+
+\maketitle
+
+\section{Soru: 2020/03/12}
+Soru: $\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}$ ise n'in tek degerleri icin $\int_0^\infty t^ne^{-kt^2}dt$ nedir?
+\\ \\
+\textbf{Cevap: }\\
+
+$n$ tek ise $n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}$ yazılabilir. Öyleyse integral: 
+
+\begin{equation}
+    \int_0^\infty t^{2m+1}e^{-kt^2}dt = \int_0^\infty t^{2m}te^{-kt^2}dt
+\end{equation}
+
+Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. $z = t^2$ için $dz = 2tdt$ olur.
+\begin{align}
+    z &= t^2 \\
+    dz&= 2tdt \\
+    t^{2m} &= (t^2)^m = z^m \\
+    t &\rightarrow 0, \quad z \rightarrow 0 \\
+    t &\rightarrow \infty, \quad  z \rightarrow \infty
+\end{align}
+
+Öyleyse:
+
+\begin{equation}
+     \underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}dz}_{I(m)}
+\end{equation}
+
+Bundan sonra $I(m)$'i çözmek integral reduction ile çok kolay! Tabi yardımımıza kısmi integrasyon yetişsin. $\int vdu = uv - \int udv$
+\begin{align}
+    v &= z^m \\
+    dv&= mz^{m-1} \\
+    du&= e^{-kz}dz \\
+    u &= -e^{-kz}/k \\
+\end{align}
+
+Yerlerine yazarsak:
+
+\begin{align}
+    \label{eq:Im}
+    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}dz}_{I(m-1)} 
+\end{align}
+
+Burada $f(z)$ hesaplanırsa 
+\begin{align}
+\lim_{z \to \infty} f(z) &= \lim_{z \to \infty} \left(-\frac{z^m}{e^{kz}}\right) = 0 \\
+f(0) &= 0 
+\end{align}
+
+
+Böylelikle Denklem \eqref{eq:Im}: 
+\begin{align}
+    I(m) = \frac{m}{k} I(m-1) 
+\end{align}
+
+$m=0$ için soruda verildiği üzere $I(0) = 1/(2k)$ olduğundan: 
+
+\begin{align}
+    I(1) &= \frac{1}{k} \cdot \frac{1}{2k} = \frac{1}{2k^2} \\
+    I(2) &= \frac{2}{k} \cdot \frac{1}{2k^2} = \frac{1}{k^3} \\
+    I(3) &= \frac{3}{k} \cdot \frac{1}{k^3} = \frac{3}{k^4} \\
+      & \;\;\vdots \\
+    I(m) &= \frac{m!}{2k^{m+1}} 
+\end{align}
+
+Burada tabi soruda $n$ verildigi icin $m$ cinsinden birakmak yakışık almaz. Onu da çevirmek lazım (çevirmedi)
+
+
+
+
+\end{document}
