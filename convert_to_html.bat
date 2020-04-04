@@ -1,0 +1,1 @@
+pandoc main.tex -s --mathjax -o sorular.html
