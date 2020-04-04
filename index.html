@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="VK" />
+  <title>Sorular</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Sorular</h1>
+<p class="author">VK</p>
+</header>
+
+<p>Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github’ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).</p>
+<h1 id="soru-20200404">Soru: 2020/04/04</h1>
+<p><strong>Soru:</strong> <span class="math display">\[\left. \begin{array}{r}
+x-ay +z = 1\\
+ax - y +z =a \\
+x + y -z = 0 
+\end{array} \right\} \text{lineer denklem sisteminin}\]</span></p>
+<ol type="a">
+<li><p>tek çözümünün olması için <span class="math inline">\(a=\)</span> ?</p></li>
+<li><p>çözümünün olmaması için <span class="math inline">\(a=\)</span> ?</p></li>
+<li><p>sonsuz çözümünün olması için <span class="math inline">\(a=\)</span> ?</p></li>
+</ol>
+<p><strong>Cevap:</strong> Denklemi öncelikle matris formunda yazalım. <span class="math display">\[\begin{aligned}
+    \underbrace{\left[\begin{matrix}
+        1 &amp; -a &amp; 1 \\
+        a &amp; -1 &amp; 1 \\
+        1 &amp;  1 &amp; -1 
+        \end{matrix}\right]}_{A}\left[\begin{matrix}
+    x \\
+    y \\
+    z
+    \end{matrix}\right] = \underbrace{\left[\begin{matrix}
+        1 \\
+        a \\
+        0
+        \end{matrix}\right]}_{b}\end{aligned}\]</span></p>
+<p>sol ve sağ tarafı birleştirerek arttırılmış matrisi <span class="math inline">\((A|b)\)</span> oluşturalım. <span class="math display">\[\begin{aligned}
+\left[\begin{array}{ccc|c}
+1 &amp; -a &amp; 1  &amp;1 \\
+a &amp; -1 &amp; 1  &amp;a\\
+1 &amp;  1 &amp; -1 &amp;0
+\end{array}\right]\end{aligned}\]</span></p>
+<p>Gauss eleme yöntemini uygulamak için 3. satırı <span class="math inline">\(-1\)</span> ile çarpıp 1. satıra, <span class="math inline">\(-a\)</span> ile çarpıp 2. satıra eklersek: <span class="math display">\[\begin{aligned}
+\left[\begin{array}{ccc|c}
+0 &amp; -a-1 &amp; 2  &amp; 1 \\
+0 &amp; -a-1   &amp; a+1  &amp; a\\
+1 &amp;  1   &amp; -1 &amp; 0
+\end{array}\right]\end{aligned}\]</span></p>
+<p>2. satırı -1 ile çarpıp 1. satıra eklersek <span class="math display">\[\begin{aligned}
+\left[\begin{array}{ccc|c}
+0 &amp; 0      &amp; 1-a  &amp; 1-a \\
+0 &amp; -a-1   &amp; a+1  &amp; a\\
+1 &amp;  1   &amp; -1 &amp; 0
+\end{array}\right]\end{aligned}\]</span></p>
+<p>katsayılar kısmının determinantına, 3. satır 1. sütun elemanına göre Laplace açılımıyla baktığımızda:</p>
+<p><span class="math display">\[\begin{aligned}
+\det(A) = 1\cdot (1-a)\cdot (1+a) = 1 - a^2\end{aligned}\]</span></p>
+<p><strong>a)</strong> Tek çözümü olması için <span class="math inline">\(\det(A)\neq 0\)</span> olmalı. Bu yüzden <span class="math inline">\(a \in \mathbb{R} \backslash \{1,-1\}\)</span><br />
+<strong>b)</strong> Sonsuz çözüm için ise arttırılmış matrisin rank değerinin satır sayısından küçük olması gerekir. Katsayılar kısmının determinantının <span class="math inline">\(a \in \{1,-1\}\)</span> olduğunu biliyorsak. <span class="math inline">\(a=1\)</span> için <span class="math inline">\((A|b)\)</span>’nin ilk satırının tamamen 0 olduğu açıkça görülmektedir. Böylelikle <span class="math inline">\(\text{rank}((A|b)) = 2&lt;3\)</span> olacaktır. Bu durumda sonsuz çözüm elde edilir.<br />
+<strong>c)</strong> Hiç çözümün olmaması için ise katsayılar matrisinin rank değeri 3’ten küçük olduğu halde arttırılmış matrisin rank değerinin 3 olması gereklidir. Bu durum da <span class="math inline">\(a=-1\)</span> için sağlanır.<br />
+Bu yaptığımız işlemlerin doğruluğunu gözle görmek için üstteki şartları denklem takımımıza yerleştirirsek. <span class="math inline">\(a=1\)</span> için: <span class="math display">\[\begin{array}{l}
+x - y +z = 1\\
+x - y +z = 1 \\
+x + y -z = 0 
+\end{array}\]</span></p>
+<p>Görüldüğü üzere 1. ve 2. denklem aynı olduğundan dolayı ikisinden biri silinerek gerçekte 2 tane denklem 3 tane değişken içeren bir sistemimiz olduğu görülür. Böylelikle 3. değişken bağımsız değişken olup, bu değişken sonsuz farklı değer alabileceğinden, denklem sistemimizin sonsuz çözümü vardır. Bundan farklı olarak, yine katsayılar matrisinin determinantını sıfır yapıyor olsa da <span class="math inline">\(a=-1\)</span> durumu için denklem sistemini incelersek: <span class="math display">\[\begin{array}{ll}
+x + y + z &amp;= 1\\
+-x - y + z &amp;=-1 \\
+x + y -z &amp;= 0 
+\end{array}\]</span></p>
+<p>Burada da görüldüğü gibi, 2. denklemin sol tarafını -1 ile çarptığımızda 3. denklemin sol tarafını elde edebiliyor olmamıza rağmen, sağ tarafı 1 olmaktadır. Bu da 3. denklemin 0 olan sağ tarafından farklıdır. Yani 2. ve 3. denklemlerin birbiri ile çeliştiği bellidir. Bu sebepten ötürü çözüm kümesi boştur.<br />
+Son olarak da grafik bir anlam yüklemek istersek, üstte verilen denklem sistemleri 3 boyutlu uzayda çeşitli düzlemleri ifade eder. Bir denklem sisteminin çözümünü kümesi ise bu düzlemlerin kesişiminde kalan noktalar kümesi olarak düşünülebilir. Katsayılar matrisinin determinantının sıfır olması, düzlemlerin birbirine paralel olduğuna işarettir. Denklemin sağ tarafındaki sayıların farkı da bu iki düzlem arasındaki uzaklığa işaret ettiğinden, sağ tarafı aynı olan iki paralel düzlem, aynı düzlemdir ve tüm noktalarda kesişir. Ancak eğer sağ tarafları farklıysa, aralarında sabit bir uzaklık bulunan bu iki düzlem, asla kesişmezler ve böylelikle sonuç da bulunamaz. Bunun belki grafiğini de çizerim ileride (çizmedi).</p>
+<h1 id="soru-20200312">Soru: 2020/03/12</h1>
+<p><strong>Soru:</strong> <span class="math inline">\(\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}\)</span> ise n’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}dt\)</span> nedir?<br />
+<br />
+<strong>Cevap:</strong><br />
+<span class="math inline">\(n\)</span> tek ise <span class="math inline">\(n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}\)</span> yazılabilir. Öyleyse integral:</p>
+<p><span class="math display">\[\int_0^\infty t^{2m+1}e^{-kt^2}dt = \int_0^\infty t^{2m}te^{-kt^2}dt\]</span></p>
+<p>Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. <span class="math inline">\(z = t^2\)</span> için <span class="math inline">\(dz = 2tdt\)</span> olur. <span class="math display">\[\begin{aligned}
+    z &amp;= t^2 \\
+    dz&amp;= 2tdt \\
+    t^{2m} &amp;= (t^2)^m = z^m \\
+    t &amp;\rightarrow 0, \quad z \rightarrow 0 \\
+    t &amp;\rightarrow \infty, \quad  z \rightarrow \infty\end{aligned}\]</span></p>
+<p>Öyleyse:</p>
+<p><span class="math display">\[\underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}dz}_{I(m)}\]</span></p>
+<p>Bundan sonra <span class="math inline">\(I(m)\)</span>’i çözmek integral reduction ile çok kolay! Tabi yardımımıza kısmi integrasyon yetişsin. <span class="math inline">\(\int vdu = uv - \int udv\)</span> <span class="math display">\[\begin{aligned}
+    v &amp;= z^m \\
+    dv&amp;= mz^{m-1} \\
+    du&amp;= e^{-kz}dz \\
+    u &amp;= -e^{-kz}/k \\\end{aligned}\]</span></p>
+<p>Yerlerine yazarsak:</p>
+<p><span class="math display">\[\begin{aligned}
+    \label{eq:Im}
+    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}dz}_{I(m-1)} \end{aligned}\]</span></p>
+<p>Burada <span class="math inline">\(f(z)\)</span> hesaplanırsa <span class="math display">\[\begin{aligned}
+\lim_{z \to \infty} f(z) &amp;= \lim_{z \to \infty} \left(-\frac{z^m}{e^{kz}}\right) = 0 \\
+f(0) &amp;= 0 \end{aligned}\]</span></p>
+<p>Böylelikle Denklem <a href="#eq:Im" data-reference-type="eqref" data-reference="eq:Im">[eq:Im]</a>: <span class="math display">\[\begin{aligned}
+    I(m) = \frac{m}{k} I(m-1) \end{aligned}\]</span></p>
+<p><span class="math inline">\(m=1\)</span> için soruda verildiği üzere <span class="math inline">\(I(0) = 1/(2k)\)</span> olduğundan:</p>
+<p><span class="math display">\[\begin{aligned}
+    I(1) &amp;= \frac{1}{k} \cdot \frac{1}{2k} = \frac{1}{2k^2} \\
+    I(2) &amp;= \frac{2}{k} \cdot \frac{1}{2k^2} = \frac{1}{k^3} \\
+    I(3) &amp;= \frac{3}{k} \cdot \frac{1}{k^3} = \frac{3}{k^4} \\
+      &amp; \;\;\vdots \\
+    I(m) &amp;= \frac{m!}{2k^{m+1}} \end{aligned}\]</span></p>
+<p>Burada tabi soruda <span class="math inline">\(n\)</span> verildigi icin <span class="math inline">\(m\)</span> cinsinden birakmak yakışık almaz. Onu da çevirmek lazım (çevirmedi)</p>
+</body>
+</html>
