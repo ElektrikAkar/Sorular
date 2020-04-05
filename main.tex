@@ -4,14 +4,33 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage[shortlabels]{enumitem}
+\usepackage[right]{eurosym} %for euro sign
+\usepackage[ddmmyyyy]{datetime}
+\usepackage{wrapfig}
 
-\title{Sorular}
+\usepackage{url,parskip} % Formatting packages
+
+\usepackage[usenames,dvipsnames]{xcolor} % Required for specifying custom colors
+
+
+
+\usepackage{hyperref} % Required for adding links	and customizing them
+\definecolor{linkcolour}{rgb}{0.03,0.459,0.718} % Link color
+\definecolor{linkcolour2}{rgb}{0.6,0.0,0.0} % Link color
+\definecolor{linkcolour3}{rgb}{0,0.1,0.9} % Link color
+\definecolor{light_color}{rgb}{0.2,0.2,0.2} % Link color
+\newcommand{\light}[1]{\textcolor{light_color}{#1}}
+\newcommand{\VkWebsiteUrl}[2]{\href{#1}{\textcolor{linkcolour2}{#2}}}
+\newcommand{\VkcitationUrl}[2]{\href{#1}{\textcolor{linkcolour3}{#2}}}
+
+\title{Sorular ( \VkWebsiteUrl{mobile.html}{Mobil Sürüm} )}
 \author{VK}
 
 \begin{document}
 
 
 \maketitle
+
 
 Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github'ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).
 
