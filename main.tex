@@ -7,6 +7,7 @@
 \usepackage[right]{eurosym} %for euro sign
 \usepackage[ddmmyyyy]{datetime}
 \usepackage{wrapfig}
+\usepackage{braket}
 
 \usepackage{url,parskip} % Formatting packages
 
@@ -23,7 +24,7 @@
 \newcommand{\VkWebsiteUrl}[2]{\href{#1}{\textcolor{linkcolour2}{#2}}}
 \newcommand{\VkcitationUrl}[2]{\href{#1}{\textcolor{linkcolour3}{#2}}}
 \numberwithin{equation}{section}
-\title{Sorular ( \VkWebsiteUrl{mobile.html}{Mobil Sürüm} )}
+\title{Sorular ( \VkWebsiteUrl{mobile.html}{Mobil sürüm için tıklayın} )}
 \author{VK}
 
 \begin{document}
@@ -33,6 +34,50 @@
 
 
 Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github'ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).
+
+\section{Soru: 2020/05/03}
+$F_2(x)$ üzerinde $\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)dx$ iç çarpımına göre $F_2(x)$'in $S=\{x^2,x\}$ tabanina sahip $W$ alt uzayı için ortonormal bir taban bulunuz. 
+
+\textbf{Cevap: }
+
+Bu soruyu çözmek için Gram-Schmidt methodunu kullanabiliriz. Çok fark etmemekle birlikte ilk vektörümüzü $s_1 = x^2$ yönündeki birim vektör olarak seçersek: 
+
+\begin{align}
+	u_1^\prime &= x^2 \\
+	u_1 &= \frac{u_1^\prime}{|u_1^\prime|} \nonumber\\
+	&= \frac{x^2}{\sqrt{\braket{x^2,x^2}}}\nonumber \\
+	&= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 dx)}} \nonumber \\
+	&= \frac{x^2}{\sqrt{1/5}} = \sqrt{5}x^2 
+\end{align}
+
+Daha sonra ise bulduğumuz $s_2$'nin $u_1$ yönündeki izdüşümü $s_2 = x$'ten çıkartılarak, ikinci dik vektör elde edilir. 
+%
+\begin{align}
+u_2^\prime &= s_2 - \braket{s_2,u_1} u_1 \nonumber \\
+&= x - \braket{x, \sqrt{5}x^2} \sqrt{5}x^2 \nonumber \\
+&= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 dx} \; \sqrt{5}x^2 \nonumber \\
+&= x - \sqrt{5/16} \; \sqrt{5}x^2 \nonumber \\
+&= x - \frac{5x^2}{4} 
+\end{align}
+%
+Bu vektör de boyuna bölünerek ortonormal tabanın 2. birim vektörü bulunmuş olur.
+%
+\begin{align}
+u_2 &= \frac{u_2^\prime}{|u_2^\prime|} \nonumber\\
+&= \frac{x - 5x^2/4 }{\sqrt{\braket{x - 5x^2/4,x - 5x^2/4}}}\nonumber \\
+&= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) dx)}} \nonumber \\
+&= \frac{x - 5x^2/4}{\sqrt{3}/12} = 4\sqrt{3}x- 5\sqrt{3}x^2
+\end{align}
+
+Böylelikle ortonormal taban $\{\sqrt{5}x^2,\; 4\sqrt{3}x- 5\sqrt{3}x^2\}$ olarak bulunur. İşlemin doğruluğunu kontrol etmek için aşağıdaki işlemler yapılabilir. 
+%
+\begin{align}
+\braket{u_1,u_2} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 0 \\ 
+\braket{u_1,u_1} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right) = 1 \\ 
+\braket{u_2,u_2} &= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 1 
+\end{align}
+ 
+ 
 
 \section{Soru: 2020/04/04}
 \textbf{Soru:}
@@ -141,7 +186,7 @@ Son olarak da grafik bir anlam yüklemek istersek, üstte verilen denklem sistem
 
 
 \section{Soru: 2020/03/12}
-\textbf{Soru:} $\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}$ ise n'in tek degerleri icin $\int_0^\infty t^ne^{-kt^2}dt$ nedir?
+\textbf{Soru:} $\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}$ ise $n$'in tek degerleri icin $\int_0^\infty t^ne^{-kt^2}dt$ nedir?
 \\ \\
 \textbf{Cevap: }\\
 

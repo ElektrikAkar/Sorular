@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="VK" />
-  <title>Sorular ( Mobil Sürüm )</title>
+  <title>Sorular ( Mobil sürüm için tıklayın )</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -19,11 +19,35 @@
 </head>
 <body>
 <header>
-<h1 class="title">Sorular ( <a href="mobile.html"><span style="color: linkcolour2">Mobil Sürüm</span></a> )</h1>
+<h1 class="title">Sorular ( <a href="mobile.html"><span style="color: linkcolour2">Mobil sürüm için tıklayın</span></a> )</h1>
 <p class="author">VK</p>
 </header>
 
 <p>Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github’ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).</p>
+<h1 id="soru-20200503">Soru: 2020/05/03</h1>
+<p><span class="math inline">\(F_2(x)\)</span> üzerinde <span class="math inline">\(\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)dx\)</span> iç çarpımına göre <span class="math inline">\(F_2(x)\)</span>’in <span class="math inline">\(S=\{x^2,x\}\)</span> tabanina sahip <span class="math inline">\(W\)</span> alt uzayı için ortonormal bir taban bulunuz.</p>
+<p><strong>Cevap:</strong></p>
+<p>Bu soruyu çözmek için Gram-Schmidt methodunu kullanabiliriz. Çok fark etmemekle birlikte ilk vektörümüzü <span class="math inline">\(s_1 = x^2\)</span> yönündeki birim vektör olarak seçersek:</p>
+<p><span class="math display">\[\begin{aligned}
+    u_1^\prime &amp;= x^2 \\
+    u_1 &amp;= \frac{u_1^\prime}{|u_1^\prime|} \nonumber\\
+    &amp;= \frac{x^2}{\sqrt{\braket{x^2,x^2}}}\nonumber \\
+    &amp;= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 dx)}} \nonumber \\
+    &amp;= \frac{x^2}{\sqrt{1/5}} = \sqrt{5}x^2 \end{aligned}\]</span></p>
+<p>Daha sonra ise bulduğumuz <span class="math inline">\(s_2\)</span>’nin <span class="math inline">\(u_1\)</span> yönündeki izdüşümü <span class="math inline">\(s_2 = x\)</span>’ten çıkartılarak, ikinci dik vektör elde edilir. <span class="math display">\[\begin{aligned}
+u_2^\prime &amp;= s_2 - \braket{s_2,u_1} u_1 \nonumber \\
+&amp;= x - \braket{x, \sqrt{5}x^2} \sqrt{5}x^2 \nonumber \\
+&amp;= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 dx} \; \sqrt{5}x^2 \nonumber \\
+&amp;= x - \sqrt{5/16} \; \sqrt{5}x^2 \nonumber \\
+&amp;= x - \frac{5x^2}{4} \end{aligned}\]</span> Bu vektör de boyuna bölünerek ortonormal tabanın 2. birim vektörü bulunmuş olur. <span class="math display">\[\begin{aligned}
+u_2 &amp;= \frac{u_2^\prime}{|u_2^\prime|} \nonumber\\
+&amp;= \frac{x - 5x^2/4 }{\sqrt{\braket{x - 5x^2/4,x - 5x^2/4}}}\nonumber \\
+&amp;= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) dx)}} \nonumber \\
+&amp;= \frac{x - 5x^2/4}{\sqrt{3}/12} = 4\sqrt{3}x- 5\sqrt{3}x^2\end{aligned}\]</span></p>
+<p>Böylelikle ortonormal taban <span class="math inline">\(\{\sqrt{5}x^2,\; 4\sqrt{3}x- 5\sqrt{3}x^2\}\)</span> olarak bulunur. İşlemin doğruluğunu kontrol etmek için aşağıdaki işlemler yapılabilir. <span class="math display">\[\begin{aligned}
+\braket{u_1,u_2} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 0 \\ 
+\braket{u_1,u_1} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right) = 1 \\ 
+\braket{u_2,u_2} &amp;= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 1 \end{aligned}\]</span></p>
 <h1 id="soru-20200404">Soru: 2020/04/04</h1>
 <p><strong>Soru:</strong> <span class="math display">\[\left. \begin{array}{r}
 x-ay +z = 1\\
@@ -86,7 +110,7 @@ x + y -z &amp;= 0
 <p>Burada da görüldüğü gibi, 2. denklemin sol tarafını -1 ile çarptığımızda 3. denklemin sol tarafını elde edebiliyor olmamıza rağmen, sağ tarafı 1 olmaktadır. Bu da 3. denklemin 0 olan sağ tarafından farklıdır. Yani 2. ve 3. denklemlerin birbiri ile çeliştiği bellidir. Bu sebepten ötürü çözüm kümesi boştur.<br />
 Son olarak da grafik bir anlam yüklemek istersek, üstte verilen denklem sistemleri 3 boyutlu uzayda çeşitli düzlemleri ifade eder. Bir denklem sisteminin çözümünü kümesi ise bu düzlemlerin kesişiminde kalan noktalar kümesi olarak düşünülebilir. Katsayılar matrisinin determinantının sıfır olması, düzlemlerin birbirine paralel olduğuna işarettir. Denklemin sağ tarafındaki sayıların farkı da bu iki düzlem arasındaki uzaklığa işaret ettiğinden, sağ tarafı aynı olan iki paralel düzlem, aynı düzlemdir ve tüm noktalarda kesişir. Ancak eğer sağ tarafları farklıysa, aralarında sabit bir uzaklık bulunan bu iki düzlem, asla kesişmezler ve böylelikle sonuç da bulunamaz. Bunun belki grafiğini de çizerim ileride (çizmedi).</p>
 <h1 id="soru-20200312">Soru: 2020/03/12</h1>
-<p><strong>Soru:</strong> <span class="math inline">\(\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}\)</span> ise n’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}dt\)</span> nedir?<br />
+<p><strong>Soru:</strong> <span class="math inline">\(\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}\)</span> ise <span class="math inline">\(n\)</span>’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}dt\)</span> nedir?<br />
 <br />
 <strong>Cevap:</strong><br />
 <span class="math inline">\(n\)</span> tek ise <span class="math inline">\(n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}\)</span> yazılabilir. Öyleyse integral:</p>
