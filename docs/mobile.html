@@ -24,26 +24,27 @@
 </header>
 
 <p>Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github’ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).</p>
+<p>Not: Bazı çözümler hatalıdır.</p>
 <h1 id="soru-20200602">Soru: 2020/06/02</h1>
-<p><span class="math display">\[\oint\limits_{\mathcal{C}=1} \frac{\sin(z)}{z^4}\,\mathrm{d}z \; \text{ where } \mathcal{C} =\{z: |z|=1, 0\leqslant \arg(z) \leqslant 2\pi \}\]</span></p>
+<p><span class="math display">\[\oint\limits_{\mathcal{C}} \frac{\sin(z)}{z^4}\,\mathrm{d}z \; \text{ where } \mathcal{C} =\{z\in \mathbb{C}: |z|=1, 0\leqslant \arg(z) \leqslant 2\pi \}\]</span></p>
 <p><strong>Cevap:</strong></p>
 <p>Aslında bu sorunun çözümü kolayca <a href="https://math.stackexchange.com/questions/648066/evaluate-the-contour-integral-int-gamma0-1-frac-sinzz4dz"><span style="color: linkcolour2">Cauchy Integrali</span></a> üzerinden bulunabilir. Ancak <a href="https://twitter.com/giritli_dogrucu/status/1266107079011569664"><span style="color: linkcolour3">@giritli_dogrucu</span></a> tarafından çözüm ilgimi çektiği için onun yolu ile çözmek istiyorum. İlk aşamada onun geldiği yere kadar olan kısmı ondan alıntı yaparak buraya yazıyorum.</p>
 <p><span class="math inline">\(|z| =1\)</span> olduğu için <span class="math inline">\(z = e^{i\theta}\)</span> burada <span class="math inline">\(\theta \in [0, 2\pi]\)</span> yani birim çember (genel olarak <span class="math inline">\(z = re^{i\theta}\)</span> yazılabilir). Integralde değişken dönüşümü yapmak için <span class="math display">\[\begin{aligned}
-    \frac{dz}{d\theta} &amp;= i e^{i\theta} \text{ ise } dz = i e^{i\theta} \\
+    \frac{\mathrm{d}z}{\mathrm{d}\theta} &amp;= i e^{i\theta} \text{ ise } \mathrm{d}z = i e^{i\theta} \mathrm{d}\theta\\
     \label{eq:20200602:intbase}
-    I &amp;= \oint\limits_{\mathcal{C}=1} \frac{\sin(z)}{z^4}\,\mathrm{d}z = \int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{4i\theta}} \cdot i e^{i\theta} d\theta \nonumber \\
-    &amp;= i\int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{3i\theta}}  d\theta\end{aligned}\]</span></p>
+    I &amp;= \oint\limits_{\mathcal{C}} \frac{\sin(z)}{z^4}\,\mathrm{d}z = \int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{4i\theta}} \cdot i e^{i\theta} \mathrm{d}\theta \nonumber \\
+    &amp;= i\int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{3i\theta}}  \mathrm{d}\theta\end{aligned}\]</span></p>
 <p>Çözüm <a href="https://twitter.com/giritli_dogrucu/status/1266107079011569664"><span style="color: linkcolour3">@giritli_dogrucu</span></a> tarafından buraya kadar yapılmış olup, geriye kalan kısım egzersiz olması amacıyla öğrenciye bırakılmıştır. Ben de egzersiz yapmayı seven biri olarak çözümün kalanını için de uğraşmak istedim. Şöyle ki herkes seriye açarak integral alıyor, ben niye almayayım değil mi :) (alamadı).</p>
 <p>Bu soruyu çözmek için öncelikle sinüs fonksiyonunun Taylor serisine açılımını anımsayalım Denklem <a href="#eq:sinus_taylor" data-reference-type="eqref" data-reference="eq:sinus_taylor">[eq:sinus_taylor]</a>. <span class="math display">\[\begin{aligned}
 \label{eq:sinus_taylor}
     \sin(x) = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!}\end{aligned}\]</span></p>
 <p>Denklem <a href="#eq:sinus_taylor" data-reference-type="eqref" data-reference="eq:sinus_taylor">[eq:sinus_taylor]</a>’i kullanarak Denklem <a href="#eq:20200602:intbase" data-reference-type="eqref" data-reference="eq:20200602:intbase">[eq:20200602:intbase]</a> içerisindeki sinüsü seriye açarsak: <span class="math display">\[\begin{aligned}
- I = i\int_0^{2\pi} \frac{\sum_{n=0}^{\infty} (-1)^n \frac{(e^{i\theta} )^{2n+1}}{(2n+1)!}}{e^{3i\theta}}  d\theta\end{aligned}\]</span></p>
+ I = i\int_0^{2\pi} \frac{\sum_{n=0}^{\infty} (-1)^n \frac{(e^{i\theta} )^{2n+1}}{(2n+1)!}}{e^{3i\theta}}  \mathrm{d}\theta\end{aligned}\]</span></p>
 <p>Burada integral ile toplam sembolunun yerini değiştirip <span class="math inline">\(\theta\)</span>’ya bağlı olmayan terimleri dışarı atarsak: <span class="math display">\[\begin{aligned}
-I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} \frac{ e^{i\theta\cdot (2n+1)} }{e^{3i\theta}}  d\theta\end{aligned}\]</span></p>
+I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} \frac{ e^{i\theta\cdot (2n+1)} }{e^{3i\theta}}  \mathrm{d}\theta\end{aligned}\]</span></p>
 <p>Integralin içerisindeki pay ve paydayı tabanlar aynı olduğu için birleştirebiliriz.</p>
 <p><span class="math display">\[\begin{aligned}
-I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} e^{i\theta\cdot (2n-2)}  d\theta\end{aligned}\]</span></p>
+I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} e^{i\theta\cdot (2n-2)}  \mathrm{d}\theta\end{aligned}\]</span></p>
 <p>Artık intagralimiz öcü formundan çıkıp herkesin alabileceği bir şekle büründü (bu sefer de toplam sembolü öcü gibi duruyor, bunu tekrar nasıl fonksiyona dönüştüreceğiz :O). Öyleyse integrali alalım. (Not: toplam sembolünün solundaki <span class="math inline">\(i\)</span> ile paydadaki <span class="math inline">\(i\)</span> sadeleşiyor).</p>
 <p><span class="math display">\[\begin{aligned}
 I &amp;= i\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{ e^{i\theta\cdot (2n-2)}  }{i\cdot (2n-2)}\right|_0^{2\pi} \nonumber \\
@@ -63,29 +64,28 @@ I&amp;= \frac{-1}{3!} \cdot \left( \frac{ 4i\pi\cdot 1}{2}\right) \nonumber \\
 &amp;= -\frac{i\pi}{3}\end{aligned}\]</span></p>
 <p>olarak Cauchy Integrali ile aynı sonuç bulunur. Fark edildiyse, sadece belirsizlik oluşturan kısım toplam sembolünde fark oluşturdu, bu da Cauchy Integralindeki sadece çemberin içinde kalan tekil noktaların etkisi hakkında bir fikir veriyor.</p>
 <h1 id="soru-20200503">Soru: 2020/05/03</h1>
-<p><span class="math inline">\(F_2(x)\)</span> üzerinde <span class="math inline">\(\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)dx\)</span> iç çarpımına göre <span class="math inline">\(F_2(x)\)</span>’in <span class="math inline">\(S=\{x^2,x\}\)</span> tabanina sahip <span class="math inline">\(W\)</span> alt uzayı için ortonormal bir taban bulunuz.</p>
+<p><span class="math inline">\(F_2(x)\)</span> üzerinde <span class="math inline">\(\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)\mathrm{d}x\)</span> iç çarpımına göre <span class="math inline">\(F_2(x)\)</span>’in <span class="math inline">\(S=\{x^2,x\}\)</span> tabanina sahip <span class="math inline">\(W\)</span> alt uzayı için ortonormal bir taban bulunuz.</p>
 <p><strong>Cevap:</strong></p>
-<p>Bu soruyu çözmek için Gram-Schmidt methodunu kullanabiliriz. Çok fark etmemekle birlikte ilk vektörümüzü <span class="math inline">\(s_1 = x^2\)</span> yönündeki birim vektör olarak seçersek:</p>
-<p><span class="math display">\[\begin{aligned}
+<p>Bu soruyu çözmek için Gram-Schmidt methodunu kullanabiliriz. Çok fark etmemekle birlikte ilk vektörümüzü <span class="math inline">\(s_1 = x^2\)</span> yönündeki birim vektör olarak seçersek: <span class="math display">\[\begin{aligned}
     u_1^\prime &amp;= x^2 \\
     u_1 &amp;= \frac{u_1^\prime}{|u_1^\prime|} \nonumber\\
     &amp;= \frac{x^2}{\sqrt{\braket{x^2,x^2}}}\nonumber \\
-    &amp;= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 dx)}} \nonumber \\
+    &amp;= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 \mathrm{d}x)}} \nonumber \\
     &amp;= \frac{x^2}{\sqrt{1/5}} = \sqrt{5}x^2 \end{aligned}\]</span></p>
 <p>Daha sonra ise bulduğumuz <span class="math inline">\(s_2\)</span>’nin <span class="math inline">\(u_1\)</span> yönündeki izdüşümü <span class="math inline">\(s_2 = x\)</span>’ten çıkartılarak, ikinci dik vektör elde edilir. <span class="math display">\[\begin{aligned}
 u_2^\prime &amp;= s_2 - \braket{s_2,u_1} u_1 \nonumber \\
 &amp;= x - \braket{x, \sqrt{5}x^2} \sqrt{5}x^2 \nonumber \\
-&amp;= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 dx} \; \sqrt{5}x^2 \nonumber \\
+&amp;= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 \mathrm{d}x} \; \sqrt{5}x^2 \nonumber \\
 &amp;= x - \sqrt{5/16} \; \sqrt{5}x^2 \nonumber \\
 &amp;= x - \frac{5x^2}{4} \end{aligned}\]</span> Bu vektör de boyuna bölünerek ortonormal tabanın 2. birim vektörü bulunmuş olur. <span class="math display">\[\begin{aligned}
 u_2 &amp;= \frac{u_2^\prime}{|u_2^\prime|} \nonumber\\
 &amp;= \frac{x - 5x^2/4 }{\sqrt{\braket{x - 5x^2/4,x - 5x^2/4}}}\nonumber \\
-&amp;= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) dx)}} \nonumber \\
+&amp;= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) \mathrm{d}x)}} \nonumber \\
 &amp;= \frac{x - 5x^2/4}{\sqrt{3}/12} = 4\sqrt{3}x- 5\sqrt{3}x^2\end{aligned}\]</span></p>
 <p>Böylelikle ortonormal taban <span class="math inline">\(\{\sqrt{5}x^2,\; 4\sqrt{3}x- 5\sqrt{3}x^2\}\)</span> olarak bulunur. İşlemin doğruluğunu kontrol etmek için aşağıdaki işlemler yapılabilir. <span class="math display">\[\begin{aligned}
-\braket{u_1,u_2} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 0 \\ 
-\braket{u_1,u_1} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right) = 1 \\ 
-\braket{u_2,u_2} &amp;= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 1 \end{aligned}\]</span></p>
+\braket{u_1,u_2} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right)\mathrm{d}x = 0 \\ 
+\braket{u_1,u_1} &amp;= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right)\mathrm{d}x = 1 \\ 
+\braket{u_2,u_2} &amp;= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right)\mathrm{d}x = 1 \end{aligned}\]</span></p>
 <h1 id="soru-20200404">Soru: 2020/04/04</h1>
 <p><strong>Soru:</strong> <span class="math display">\[\left. \begin{array}{r}
 x-ay +z = 1\\
@@ -148,28 +148,28 @@ x + y -z &amp;= 0
 <p>Burada da görüldüğü gibi, 2. denklemin sol tarafını -1 ile çarptığımızda 3. denklemin sol tarafını elde edebiliyor olmamıza rağmen, sağ tarafı 1 olmaktadır. Bu da 3. denklemin 0 olan sağ tarafından farklıdır. Yani 2. ve 3. denklemlerin birbiri ile çeliştiği bellidir. Bu sebepten ötürü çözüm kümesi boştur.<br />
 Son olarak da grafik bir anlam yüklemek istersek, üstte verilen denklem sistemleri 3 boyutlu uzayda çeşitli düzlemleri ifade eder. Bir denklem sisteminin çözümünü kümesi ise bu düzlemlerin kesişiminde kalan noktalar kümesi olarak düşünülebilir. Katsayılar matrisinin determinantının sıfır olması, düzlemlerin birbirine paralel olduğuna işarettir. Denklemin sağ tarafındaki sayıların farkı da bu iki düzlem arasındaki uzaklığa işaret ettiğinden, sağ tarafı aynı olan iki paralel düzlem, aynı düzlemdir ve tüm noktalarda kesişir. Ancak eğer sağ tarafları farklıysa, aralarında sabit bir uzaklık bulunan bu iki düzlem, asla kesişmezler ve böylelikle sonuç da bulunamaz. Bunun belki grafiğini de çizerim ileride (çizmedi).</p>
 <h1 id="soru-20200312">Soru: 2020/03/12</h1>
-<p><strong>Soru:</strong> <span class="math inline">\(\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}\)</span> ise <span class="math inline">\(n\)</span>’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}dt\)</span> nedir?<br />
+<p><strong>Soru:</strong> <span class="math inline">\(\int_0^\infty te^{-kt^2}\mathrm{d}t = \frac{1}{2k}\)</span> ise <span class="math inline">\(n\)</span>’in tek degerleri icin <span class="math inline">\(\int_0^\infty t^ne^{-kt^2}\mathrm{d}t\)</span> nedir?<br />
 <br />
 <strong>Cevap:</strong><br />
 <span class="math inline">\(n\)</span> tek ise <span class="math inline">\(n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}\)</span> yazılabilir. Öyleyse integral:</p>
-<p><span class="math display">\[\int_0^\infty t^{2m+1}e^{-kt^2}dt = \int_0^\infty t^{2m}te^{-kt^2}dt\]</span></p>
-<p>Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. <span class="math inline">\(z = t^2\)</span> için <span class="math inline">\(dz = 2tdt\)</span> olur. <span class="math display">\[\begin{aligned}
+<p><span class="math display">\[\int_0^\infty t^{2m+1}e^{-kt^2}\mathrm{d}t = \int_0^\infty t^{2m}te^{-kt^2}\mathrm{d}t\]</span></p>
+<p>Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. <span class="math inline">\(z = t^2\)</span> için <span class="math inline">\(\mathrm{d}z = 2t\mathrm{d}t\)</span> olur. <span class="math display">\[\begin{aligned}
     z &amp;= t^2 \\
-    dz&amp;= 2tdt \\
+    \mathrm{d}z&amp;= 2t\mathrm{d}t \\
     t^{2m} &amp;= (t^2)^m = z^m \\
     t &amp;\rightarrow 0, \quad z \rightarrow 0 \\
     t &amp;\rightarrow \infty, \quad  z \rightarrow \infty\end{aligned}\]</span></p>
 <p>Öyleyse:</p>
-<p><span class="math display">\[\underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}dz}_{I(m)}\]</span></p>
+<p><span class="math display">\[\underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}\mathrm{d}z}_{I(m)}\]</span></p>
 <p>Bundan sonra <span class="math inline">\(I(m)\)</span>’i çözmek integral reduction ile çok kolay! Tabi yardımımıza kısmi integrasyon yetişsin. <span class="math inline">\(\int vdu = uv - \int udv\)</span> <span class="math display">\[\begin{aligned}
     v &amp;= z^m \\
     dv&amp;= mz^{m-1} \\
-    du&amp;= e^{-kz}dz \\
+    du&amp;= e^{-kz}\mathrm{d}z \\
     u &amp;= -e^{-kz}/k \end{aligned}\]</span></p>
 <p>Yerlerine yazarsak:</p>
 <p><span class="math display">\[\begin{aligned}
     \label{eq:Im}
-    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}dz}_{I(m-1)} \end{aligned}\]</span></p>
+    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}\mathrm{d}z}_{I(m-1)} \end{aligned}\]</span></p>
 <p>Burada <span class="math inline">\(f(z)\)</span> hesaplanırsa <span class="math display">\[\begin{aligned}
 \lim_{z \to \infty} f(z) &amp;= \lim_{z \to \infty} \left(-\frac{z^m}{e^{kz}}\right) = 0 \\
 f(0) &amp;= 0 \end{aligned}\]</span></p>
