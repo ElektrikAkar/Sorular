@@ -35,6 +35,8 @@
 
 Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github'ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).
 
+Not: Bazı çözümler hatalıdır.
+
 \section{Soru: 2020/06/02} 
 $$\oint\limits_{\mathcal{C}=1} \frac{\sin(z)}{z^4}\,\mathrm{d}z \; \text{ where } \mathcal{C} =\{z: |z|=1, 0\leqslant \arg(z) \leqslant 2\pi \}$$
 
@@ -44,10 +46,10 @@ Aslında bu sorunun çözümü kolayca \VkWebsiteUrl{https://math.stackexchange.
 
 $|z| =1$ olduğu için $z = e^{i\theta}$ burada $\theta \in [0, 2\pi]$  yani birim çember (genel olarak  $z = re^{i\theta}$ yazılabilir). Integralde değişken dönüşümü yapmak için 
 \begin{align}
-	\frac{dz}{d\theta} &= i e^{i\theta} \text{ ise } dz = i e^{i\theta} \\
+	\frac{\mathrm{d}z}{\mathrm{d}\theta} &= i e^{i\theta} \text{ ise } \mathrm{d}z = i e^{i\theta} \mathrm{d}\theta\\
 	\label{eq:20200602:intbase}
-	I &= \oint\limits_{\mathcal{C}=1} \frac{\sin(z)}{z^4}\,\mathrm{d}z = \int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{4i\theta}} \cdot i e^{i\theta} d\theta \nonumber \\
-	&= i\int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{3i\theta}}  d\theta
+	I &= \oint\limits_{\mathcal{C}=1} \frac{\sin(z)}{z^4}\,\mathrm{d}z = \int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{4i\theta}} \cdot i e^{i\theta} \mathrm{d}\theta \nonumber \\
+	&= i\int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{3i\theta}}  \mathrm{d}\theta
 \end{align}
 
 Çözüm \VkcitationUrl{https://twitter.com/giritli_dogrucu/status/1266107079011569664}{@giritli\_dogrucu} tarafından buraya kadar yapılmış olup, geriye kalan kısım egzersiz olması amacıyla öğrenciye bırakılmıştır. Ben de egzersiz yapmayı seven biri olarak çözümün kalanını için de uğraşmak istedim. Şöyle ki herkes seriye açarak integral alıyor, ben niye almayayım değil mi :) (alamadı).
@@ -63,18 +65,18 @@ Denklem \eqref{eq:sinus_taylor}'i kullanarak Denklem \eqref{eq:20200602:intbase}
 %
 %\sin(e^{i\theta})
 \begin{align}
- I = i\int_0^{2\pi} \frac{\sum_{n=0}^{\infty} (-1)^n \frac{(e^{i\theta} )^{2n+1}}{(2n+1)!}}{e^{3i\theta}}  d\theta
+ I = i\int_0^{2\pi} \frac{\sum_{n=0}^{\infty} (-1)^n \frac{(e^{i\theta} )^{2n+1}}{(2n+1)!}}{e^{3i\theta}}  \mathrm{d}\theta
 \end{align} 
 
 Burada integral ile toplam sembolunun yerini değiştirip $\theta$'ya bağlı olmayan terimleri dışarı atarsak: 
 \begin{align}
-I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} \frac{ e^{i\theta\cdot (2n+1)} }{e^{3i\theta}}  d\theta
+I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} \frac{ e^{i\theta\cdot (2n+1)} }{e^{3i\theta}}  \mathrm{d}\theta
 \end{align} 
 
 Integralin içerisindeki pay ve paydayı tabanlar aynı olduğu için birleştirebiliriz.
 
 \begin{align}
-I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} e^{i\theta\cdot (2n-2)}  d\theta
+I = i \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}  \int_0^{2\pi} e^{i\theta\cdot (2n-2)}  \mathrm{d}\theta
 \end{align} 
 
 Artık intagralimiz öcü formundan çıkıp herkesin alabileceği bir şekle büründü (bu sefer de toplam sembolü öcü gibi duruyor, bunu tekrar nasıl fonksiyona dönüştüreceğiz :O). Öyleyse integrali alalım. (Not: toplam sembolünün solundaki $i$ ile paydadaki $i$ sadeleşiyor).
@@ -112,17 +114,17 @@ I&= \frac{-1}{3!} \cdot \left( \frac{ 4i\pi\cdot 1}{2}\right) \nonumber \\
 olarak Cauchy Integrali ile aynı sonuç bulunur. Fark edildiyse, sadece belirsizlik oluşturan kısım toplam sembolünde fark oluşturdu, bu da Cauchy Integralindeki sadece çemberin içinde kalan tekil noktaların etkisi hakkında bir fikir veriyor. 
 
 \section{Soru: 2020/05/03}
-$F_2(x)$ üzerinde $\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)dx$ iç çarpımına göre $F_2(x)$'in $S=\{x^2,x\}$ tabanina sahip $W$ alt uzayı için ortonormal bir taban bulunuz. 
+$F_2(x)$ üzerinde $\braket{p(x),q(x)} = \int_{0}^{1}p(x)q(x)\mathrm{d}x$ iç çarpımına göre $F_2(x)$'in $S=\{x^2,x\}$ tabanina sahip $W$ alt uzayı için ortonormal bir taban bulunuz. 
 
 \textbf{Cevap: }
 
 Bu soruyu çözmek için Gram-Schmidt methodunu kullanabiliriz. Çok fark etmemekle birlikte ilk vektörümüzü $s_1 = x^2$ yönündeki birim vektör olarak seçersek: 
-
+%
 \begin{align}
 	u_1^\prime &= x^2 \\
 	u_1 &= \frac{u_1^\prime}{|u_1^\prime|} \nonumber\\
 	&= \frac{x^2}{\sqrt{\braket{x^2,x^2}}}\nonumber \\
-	&= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 dx)}} \nonumber \\
+	&= \frac{x^2}{\sqrt{\int_{0}^{1}(x^2\cdot x^2 \mathrm{d}x)}} \nonumber \\
 	&= \frac{x^2}{\sqrt{1/5}} = \sqrt{5}x^2 
 \end{align}
 
@@ -131,7 +133,7 @@ Daha sonra ise bulduğumuz $s_2$'nin $u_1$ yönündeki izdüşümü $s_2 = x$'te
 \begin{align}
 u_2^\prime &= s_2 - \braket{s_2,u_1} u_1 \nonumber \\
 &= x - \braket{x, \sqrt{5}x^2} \sqrt{5}x^2 \nonumber \\
-&= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 dx} \; \sqrt{5}x^2 \nonumber \\
+&= x - \sqrt{\int_{0}^{1}x\cdot \sqrt{5}x^2 \mathrm{d}x} \; \sqrt{5}x^2 \nonumber \\
 &= x - \sqrt{5/16} \; \sqrt{5}x^2 \nonumber \\
 &= x - \frac{5x^2}{4} 
 \end{align}
@@ -141,16 +143,16 @@ Bu vektör de boyuna bölünerek ortonormal tabanın 2. birim vektörü bulunmu�
 \begin{align}
 u_2 &= \frac{u_2^\prime}{|u_2^\prime|} \nonumber\\
 &= \frac{x - 5x^2/4 }{\sqrt{\braket{x - 5x^2/4,x - 5x^2/4}}}\nonumber \\
-&= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) dx)}} \nonumber \\
+&= \frac{x - 5x^2/4}{\sqrt{\int_{0}^{1}((x - 5x^2/4)\cdot (x - 5x^2/4) \mathrm{d}x)}} \nonumber \\
 &= \frac{x - 5x^2/4}{\sqrt{3}/12} = 4\sqrt{3}x- 5\sqrt{3}x^2
 \end{align}
 
 Böylelikle ortonormal taban $\{\sqrt{5}x^2,\; 4\sqrt{3}x- 5\sqrt{3}x^2\}$ olarak bulunur. İşlemin doğruluğunu kontrol etmek için aşağıdaki işlemler yapılabilir. 
 %
 \begin{align}
-\braket{u_1,u_2} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 0 \\ 
-\braket{u_1,u_1} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right) = 1 \\ 
-\braket{u_2,u_2} &= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right) = 1 
+\braket{u_1,u_2} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right)\mathrm{d}x = 0 \\ 
+\braket{u_1,u_1} &= \int_{0}^{1}\left(\sqrt{5}x^2 \cdot \sqrt{5}x^2\right)\mathrm{d}x = 1 \\ 
+\braket{u_2,u_2} &= \int_{0}^{1}\left(( 4\sqrt{3}x- 5\sqrt{3}x^2) \cdot ( 4\sqrt{3}x- 5\sqrt{3}x^2)\right)\mathrm{d}x = 1 
 \end{align}
  
  
@@ -262,20 +264,20 @@ Son olarak da grafik bir anlam yüklemek istersek, üstte verilen denklem sistem
 
 
 \section{Soru: 2020/03/12}
-\textbf{Soru:} $\int_0^\infty te^{-kt^2}dt = \frac{1}{2k}$ ise $n$'in tek degerleri icin $\int_0^\infty t^ne^{-kt^2}dt$ nedir?
+\textbf{Soru:} $\int_0^\infty te^{-kt^2}\mathrm{d}t = \frac{1}{2k}$ ise $n$'in tek degerleri icin $\int_0^\infty t^ne^{-kt^2}\mathrm{d}t$ nedir?
 \\ \\
 \textbf{Cevap: }\\
 
 $n$ tek ise $n = 2m+1 \quad \forall m \in \{0,1,2,\cdots \}$ yazılabilir. Öyleyse integral: 
 
 \begin{equation}
-    \int_0^\infty t^{2m+1}e^{-kt^2}dt = \int_0^\infty t^{2m}te^{-kt^2}dt
+    \int_0^\infty t^{2m+1}e^{-kt^2}\mathrm{d}t = \int_0^\infty t^{2m}te^{-kt^2}\mathrm{d}t
 \end{equation}
 
-Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. $z = t^2$ için $dz = 2tdt$ olur.
+Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yapalım. $z = t^2$ için $\mathrm{d}z = 2t\mathrm{d}t$ olur.
 \begin{align}
     z &= t^2 \\
-    dz&= 2tdt \\
+    \mathrm{d}z&= 2t\mathrm{d}t \\
     t^{2m} &= (t^2)^m = z^m \\
     t &\rightarrow 0, \quad z \rightarrow 0 \\
     t &\rightarrow \infty, \quad  z \rightarrow \infty
@@ -284,14 +286,14 @@ Bunu integral reduction ile çözmeliyiz. Ama önce değişken dönüşümü yap
 Öyleyse:
 
 \begin{equation}
-     \underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}dz}_{I(m)}
+     \underbrace{\frac{1}{2} \int_0^\infty z^m e^{-kz}\mathrm{d}z}_{I(m)}
 \end{equation}
 
 Bundan sonra $I(m)$'i çözmek integral reduction ile çok kolay! Tabi yardımımıza kısmi integrasyon yetişsin. $\int vdu = uv - \int udv$
 \begin{align}
     v &= z^m \\
     dv&= mz^{m-1} \\
-    du&= e^{-kz}dz \\
+    du&= e^{-kz}\mathrm{d}z \\
     u &= -e^{-kz}/k 
 \end{align}
 
@@ -299,7 +301,7 @@ Yerlerine yazarsak:
 
 \begin{align}
     \label{eq:Im}
-    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}dz}_{I(m-1)} 
+    I(m) = \frac{1}{2}\left(\underbrace{-e^{-kz}z^m/k}_{f(z)}\right|_0^\infty + \frac{m}{k}\underbrace{\frac{1}{2}\int_0^\infty z^{m-1}e^{-kz}\mathrm{d}z}_{I(m-1)} 
 \end{align}
 
 Burada $f(z)$ hesaplanırsa 
