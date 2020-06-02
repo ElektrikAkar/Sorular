@@ -25,16 +25,17 @@
 
 <p>Bazen çevreden hoşuma giden sorular görüyorum. Bunları da çözüp atmak yerine bir yerde depolayıp örnek sorular oluşturma fikri aklıma geldi. O yüzden Github’ta tutayım dedim, belki gün gelir yeterli soru birikirse millet de faydalanır (faydalanamadı).</p>
 <p>Not: Bazı çözümler hatalıdır.</p>
+<p>Not-2: Mobil sürüme tıklamayınız, beklentileri pek de karşılamıyor. Vakit olunca siteyi yenileyeceğim (yenilemedi).</p>
 <h1 id="soru-20200602">Soru: 2020/06/02</h1>
 <p><span class="math display">\[\oint\limits_{\mathcal{C}} \frac{\sin(z)}{z^4}\,\mathrm{d}z \; \text{ where } \mathcal{C} =\{z\in \mathbb{C}: |z|=1, 0\leqslant \arg(z) \leqslant 2\pi \}\]</span></p>
 <p><strong>Cevap:</strong></p>
 <p>Aslında bu sorunun çözümü kolayca <a href="https://math.stackexchange.com/questions/648066/evaluate-the-contour-integral-int-gamma0-1-frac-sinzz4dz"><span style="color: linkcolour2">Cauchy Integrali</span></a> üzerinden bulunabilir. Ancak <a href="https://twitter.com/giritli_dogrucu/status/1266107079011569664"><span style="color: linkcolour3">@giritli_dogrucu</span></a> tarafından çözüm ilgimi çektiği için onun yolu ile çözmek istiyorum. İlk aşamada onun geldiği yere kadar olan kısmı ondan alıntı yaparak buraya yazıyorum.</p>
 <p><span class="math inline">\(|z| =1\)</span> olduğu için <span class="math inline">\(z = e^{i\theta}\)</span> burada <span class="math inline">\(\theta \in [0, 2\pi]\)</span> yani birim çember (genel olarak <span class="math inline">\(z = re^{i\theta}\)</span> yazılabilir). Integralde değişken dönüşümü yapmak için <span class="math display">\[\begin{aligned}
-    \frac{\mathrm{d}z}{\mathrm{d}\theta} &amp;= i e^{i\theta} \text{ ise } \mathrm{d}z = i e^{i\theta} \mathrm{d}\theta\\
+    z &amp;=  e^{i\theta} \text{ ise } \mathrm{d}z = i e^{i\theta} \mathrm{d}\theta\\
     \label{eq:20200602:intbase}
     I &amp;= \oint\limits_{\mathcal{C}} \frac{\sin(z)}{z^4}\,\mathrm{d}z = \int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{4i\theta}} \cdot i e^{i\theta} \mathrm{d}\theta \nonumber \\
     &amp;= i\int_0^{2\pi} \frac{\sin(e^{i\theta})}{e^{3i\theta}}  \mathrm{d}\theta\end{aligned}\]</span></p>
-<p>Çözüm <a href="https://twitter.com/giritli_dogrucu/status/1266107079011569664"><span style="color: linkcolour3">@giritli_dogrucu</span></a> tarafından buraya kadar yapılmış olup, geriye kalan kısım egzersiz olması amacıyla öğrenciye bırakılmıştır. Ben de egzersiz yapmayı seven biri olarak çözümün kalanını için de uğraşmak istedim. Şöyle ki herkes seriye açarak integral alıyor, ben niye almayayım değil mi :) (alamadı).</p>
+<p>Çözüm <a href="https://twitter.com/giritli_dogrucu/status/1266107079011569664"><span style="color: linkcolour3">@giritli_dogrucu</span></a> tarafından buraya kadar yapılmış olup, geriye kalan kısım alıştırma olması amacıyla öğrenciye bırakılmıştır. Ben de alıştırma yapmayı seven biri olarak çözümün kalanını için de uğraşmak istedim. Şöyle ki herkes seriye açarak integral alıyor, ben niye almayayım değil mi :) (alamadı).</p>
 <p>Bu soruyu çözmek için öncelikle sinüs fonksiyonunun Taylor serisine açılımını anımsayalım Denklem <a href="#eq:sinus_taylor" data-reference-type="eqref" data-reference="eq:sinus_taylor">[eq:sinus_taylor]</a>. <span class="math display">\[\begin{aligned}
 \label{eq:sinus_taylor}
     \sin(x) = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!}\end{aligned}\]</span></p>
